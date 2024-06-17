@@ -91,8 +91,7 @@ class Database:
         return user.get('ban_status', default)
 
     async def get_all_users(self):
-        users_list = (await (self.col.find({})).to_list(length=None))+(await (self.col2.find({})).to_list(length=None))
-        return users_list
+        return self.col.find({})
     
 
     async def delete_user(self, user_id):
