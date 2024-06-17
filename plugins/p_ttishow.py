@@ -62,16 +62,18 @@ async def save_group(bot, message):
                                                                          [[
                                                                            InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                                                                            InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
-                                                                        ],[
-                                                                           InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/creatorbeatz")
                                                                          ]]
                                                  ),
                                                  parse_mode=enums.ParseMode.HTML
                 )
                 
         if settings["auto_delete"]:
-            await asyncio.sleep(600)
-            await (temp.MELCOW['welcome']).delete()
+            await asyncio.sleep(180)
+            if 'welcome' in temp.MELCOW and temp.MELCOW['welcome'] is not None:
+                try:
+                    await temp.MELCOW['welcome'].delete()
+                except Exception as e:
+                    print(f"Failed to delete welcome message after delay: {e}")
                 
                
 
