@@ -6,7 +6,8 @@ from pyrogram import Client, filters, enums
 from database.users_chats_db import db
 from info import ADMINS
 
-        
+
+@Client.on_message(filters.command("broadcast") & filters.user(ADMINS) & filters.reply)        
 async def broadcast(bot, message):
     sts = await message.reply_text('Broadcasting Your Messages...')
     try:
